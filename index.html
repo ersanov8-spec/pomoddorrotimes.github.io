@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Помидорный Таймер</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>🍅 Pomodoro</h1>
+      <div class="header-controls">
+        <button id="theme-toggle" class="icon-btn" title="Сменить тему">🌙</button>
+        <button id="settings-btn" class="icon-btn" title="Настройки">⚙️</button>
+        <button id="notif-btn" class="icon-btn" title="Уведомления">🔔</button>
+      </div>
+    </header>
+
+    <input type="text" id="task-input" placeholder="Что вы собираетесь делать?">
+
+    <div class="modes">
+      <button class="mode-btn active" data-mode="work">Работа (25)</button>
+      <button class="mode-btn" data-mode="short">Короткий (5)</button>
+      <button class="mode-btn" data-mode="long">Длинный (15)</button>
+    </div>
+
+    <div class="timer-display">
+      <svg class="progress-ring" viewBox="0 0 300 300">
+        <circle class="progress-ring__bg" r="140" cx="150" cy="150"></circle>
+        <circle class="progress-ring__progress" r="140" cx="150" cy="150" stroke-dasharray="879.65" stroke-dashoffset="0"></circle>
+      </svg>
+      <div id="time" class="time-text">25:00</div>
+      <div id="session-count" class="session-count">Завершено: 0</div>
+    </div>
+
+    <div class="controls">
+      <button id="start-btn">▶ Старт</button>
+      <button id="reset-btn">↺ Сброс</button>
+    </div>
+
+    <div class="shortcuts-hint">
+      <!-- Горячие клавиши убраны -->
+    </div>
+  </div>
+
+  <div id="settings-modal" class="modal hidden">
+    <div class="modal-content">
+      <h2>⚙️ Настройка длительности</h2>
+      <div class="setting-row">
+        <label for="work-time">Работа (мин)</label>
+        <input type="number" id="work-time" min="1" max="120" value="25">
+      </div>
+      <div class="setting-row">
+        <label for="short-time">Короткий отдых (мин)</label>
+        <input type="number" id="short-time" min="1" max="60" value="5">
+      </div>
+      <div class="setting-row">
+        <label for="long-time">Длинный отдых (мин)</label>
+        <input type="number" id="long-time" min="1" max="60" value="15">
+      </div>
+      <div class="modal-actions">
+        <button id="save-settings">Сохранить</button>
+        <button id="close-settings">Отмена</button>
+      </div>
+    </div>
+  </div>
+
+  <audio id="alarm-sound" preload="auto">
+    <source src="alarm.mp3" type="audio/mpeg">
+    Ваш браузер не поддерживает аудио.
+  </audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
